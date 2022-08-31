@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        *{
+            font-family: 'Roboto', sans-serif;
+            font-size: 60px;
+            margin:0%;
+            padding: 0%;
+        }
+        button{
+            font-size: 22px;
+            height: 1rem;
+            border: 0ch;
+            border-radius: 4rem;
+            margin: 4px;justify-content: center;
+        }
+        .b1{
+            background-color: green;
+        }
+        .b1:hover{
+            background-color: rgb(2, 109, 2);
+            font-size: 24px;
+        }
+        .b2{
+            background-color: red;
+        }
+        .b2:hover{
+            background-color: rgb(214, 4, 4);
+            font-size: 24px;
+        }
+        .b3{
+            background-color: yellow;
+        }
+        .b3:hover{
+            background-color: rgb(218, 218, 3);
+            font-size: 24px;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        } 
+        .btns{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="container">
+            <div id="hours">0</div>
+            <span>:</span>
+            <div id="minutes">0</div>
+            <span>:</span>
+            <div id="seconds">0</div>
+        </div>
+        <div class="btns">
+            <button class="b1" id="start">start</button>
+            <button class="b2" id="stop">stop</button>
+            <button class="b3" id="reset">reset</button>
+        </div>
+    </div>
+    <script>
+
+        let sec = document.getElementById("seconds");
+        let min = document.getElementById("minutes");
+        let h = document.getElementById("hours");
+        // new button
+        let btn1 = document.getElementById("start");
+        let btn2 = document.getElementById("stop");
+        let btn3 = document.getElementById("reset");
+
+        var sec2 =0;
+        var min2 =0;
+        var h2 =0;
+
+        //btn1----------------startButton
+        btn1.onclick = function(){    
+        //the timer process
+        process1=
+        setInterval(function(){
+        sec2 +=1;
+        if(sec2 ==60){
+            sec2=0;
+            min2 +=1;
+            if(min2 ==60){
+                min2 =0;
+                h2 ++;
+            }
+        }
+        sec.innerText = sec2;
+        min.innerText = min2;
+        h.innerText = h2;}  , 10);
+        }
+        //btn2----------------stopButton
+        btn2.onclick = function(){
+            clearInterval(process1);
+        }
+        //btn3----------------resetButton
+        btn3.onclick = function(){
+            clearInterval(process1);
+            sec.innerText = sec2 =0;
+            min.innerText = min2 =0;
+            h.innerText = h2 =0;
+        }
+    </script>
+</body>
+</html>
